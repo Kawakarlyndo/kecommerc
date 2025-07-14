@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - ShopNow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">ShopNow</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <button id="logout-btn" class="nav-link logout-btn" onclick="logout()">Sair</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Perfil do Cliente -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Cabeçalho do Perfil -->
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img id="profile-photo" src="" alt="Foto do Perfil" class="avatar-img">
+                        <div class="avatar-placeholder" id="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profile-name">Carregando...</h2>
+                        <p id="profile-email">Carregando...</p>
+                        <div class="profile-details">
+                            <span id="profile-city"><i class="fas fa-map-marker-alt"></i> Carregando...</span>
+                            <span id="profile-phone"><i class="fas fa-phone"></i> Carregando...</span>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button id="edit-profile-btn" class="edit-btn" onclick="toggleEditMode()">
+                            <i class="fas fa-edit"></i>
+                            Editar Perfil
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Informações Detalhadas -->
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <h3>Informações Pessoais</h3>
+                        <div id="profile-view" class="profile-view">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Nome Completo:</label>
+                                    <span id="view-fullName">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Email:</label>
+                                    <span id="view-email">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Cidade:</label>
+                                    <span id="view-city">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Telefone:</label>
+                                    <span id="view-phone">Carregando...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulário de Edição -->
+                        <form id="edit-profile-form" class="edit-form" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-fullName">Nome Completo *</label>
+                                    <input type="text" id="edit-fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-city">Cidade *</label>
+                                    <input type="text" id="edit-city" name="city" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-phone">Telefone *</label>
+                                    <input type="tel" id="edit-phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-email">Email *</label>
+                                    <input type="email" id="edit-email" name="email" required disabled>
+                                    <small>O email não pode ser alterado</small>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="save-btn">
+                                    <i class="fas fa-save"></i>
+                                    Salvar Alterações
+                                </button>
+                                <button type="button" class="cancel-btn" onclick="cancelEdit()">
+                                    <i class="fas fa-times"></i>
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Endereço -->
+                    <div class="profile-card">
+                        <h3>Endereço</h3>
+                        <div id="address-view" class="profile-view">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <label>Rua:</label>
+                                    <span id="view-street">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Número:</label>
+                                    <span id="view-number">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Bairro:</label>
+                                    <span id="view-neighborhood">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Estado:</label>
+                                    <span id="view-state">Carregando...</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>CEP:</label>
+                                    <span id="view-cep">Carregando...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulário de Edição de Endereço -->
+                        <div id="edit-address-form" class="edit-form" style="display: none;">
+                            <div class="form-group">
+                                <label for="edit-street">Rua *</label>
+                                <input type="text" id="edit-street" name="street" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-number">Número *</label>
+                                    <input type="text" id="edit-number" name="number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-neighborhood">Bairro *</label>
+                                    <input type="text" id="edit-neighborhood" name="neighborhood" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-state">Estado *</label>
+                                    <select id="edit-state" name="state" required>
+                                        <option value="">Selecione o estado</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-cep">CEP *</label>
+                                    <input type="text" id="edit-cep" name="cep" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensagens de erro/sucesso -->
+                <div id="message" class="message" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts Firebase -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/profile.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopNow - Sua Loja de Roupas Online</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>ShopNow</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cadastro-produto.html" class="nav-link">Cadastrar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="filterByCategory('Camisas')">Camisas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="filterByCategory('Tênis')">Tênis</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="filterByCategory('Acessórios')">Acessórios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="perfil.html" class="nav-link" id="profile-link" style="display: none;">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <button id="logout-btn" class="nav-link logout-btn" style="display: none;" onclick="logout()">Sair</button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Principal -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo à ShopNow</h1>
+            <p>Descubra as melhores roupas e acessórios com estilo e qualidade</p>
+            <button class="cta-button" onclick="scrollToProducts()">Ver Produtos</button>
+        </div>
+    </section>
+
+    <!-- Campo de Pesquisa -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Pesquisar produtos..." class="search-input">
+                <button onclick="searchProducts()" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="filter-buttons">
+                <button onclick="showAllProducts()" class="filter-btn active">Todos</button>
+                <button onclick="filterByCategory('Camisas')" class="filter-btn">Camisas</button>
+                <button onclick="filterByCategory('Tênis')" class="filter-btn">Tênis</button>
+                <button onclick="filterByCategory('Acessórios')" class="filter-btn">Acessórios</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Destacados -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2>Produtos Destacados</h2>
+            <div id="loading" class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Carregando produtos...</p>
+            </div>
+            <div id="products-grid" class="products-grid">
+                <!-- Produtos serão carregados dinamicamente aqui -->
+            </div>
+            <div id="no-products" class="no-products" style="display: none;">
+                <i class="fas fa-box-open"></i>
+                <p>Nenhum produto encontrado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ShopNow</h3>
+                    <p>Sua loja de roupas online com estilo e qualidade.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="cadastro-produto.html">Cadastrar Produto</a></li>
+                        <li><a href="cadastro-cliente.html">Cadastrar Cliente</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> contato@shopnow.com</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShopNow. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Firebase -->
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
+
